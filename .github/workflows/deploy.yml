@@ -41,7 +41,7 @@ jobs:
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
         run: |
-        CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- 'docs/*.md' 'docs/**/*.md' | grep -v 'docs/doc-score/' || echo "")
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- 'docs/*.md' 'docs/**/*.md' | grep -v 'docs/doc-score/' || echo "")
           if [ -z "$CHANGED_FILES" ]; then
             echo "没有需要评分的文档变更，跳过"
             exit 0
