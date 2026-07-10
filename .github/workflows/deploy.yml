@@ -15,17 +15,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: 安装依赖
         run: npm ci
 
       - name: 检查文档格式
         run: npm run lint
+
+      - name: 安装 Python 依赖
+        run: pip install httpx
+
+      - name: 文档质量评分
+        if: env.LLM_API_KEY != ''
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: |
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- 'docs/**/*.md' || echo "")
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "没有文档变更，跳过评分"
+            exit 0
+          fi
+          for file in $CHANGED_FILES; do
+            if [ -f "$file" ]; then
+              echo "评分: $file"
+              python ci/score_doc.py "$file" || exit 1
+            fi
+          done
 
       - name: 构建站点
         run: npm run build
