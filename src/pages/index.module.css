@@ -1,23 +1,303 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+/* ============================================================
+   Homepage Styles — Clean, Minimal, Professional
+   ============================================================ */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
+/* ---------- Hero ---------- */
+.hero {
   position: relative;
+  padding: 6rem 2rem 5rem;
+  text-align: center;
+  background: linear-gradient(180deg, var(--ifm-background-surface-color) 0%, var(--ifm-background-color) 100%);
   overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74, 108, 247, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+[data-theme='dark'] .hero::before {
+  background: radial-gradient(circle, rgba(124, 156, 252, 0.04) 0%, transparent 70%);
+}
+
+.heroInner {
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--ifm-font-color-base) 0%, var(--ifm-font-color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--ifm-font-color-secondary);
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(74, 108, 247, 0.25);
+}
+
+.primaryButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(74, 108, 247, 0.35);
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: transparent;
+  color: var(--ifm-font-color-base) !important;
+  border: 1px solid var(--ifm-border-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.secondaryButton:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none;
+}
+
+/* ---------- Sections Common ---------- */
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  color: var(--ifm-font-color-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 3rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Features ---------- */
+.features {
+  padding: 5rem 2rem;
+}
+
+.featuresInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .featureGrid {
+    grid-template-columns: 1fr;
   }
 }
 
-.buttons {
+.featureCard {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-border-color);
+  background: var(--ifm-background-color);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.featureCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 8px 24px rgba(74, 108, 247, 0.08);
+  transform: translateY(-2px);
+  text-decoration: none !important;
+}
+
+[data-theme='dark'] .featureCard:hover {
+  box-shadow: 0 8px 24px rgba(124, 156, 252, 0.06);
+}
+
+.featureIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.featureTitle {
+  font-size: 1.15rem;
+  font-weight: 650;
+  margin-bottom: 0.5rem;
+}
+
+.featureDescription {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ifm-font-color-secondary);
+  flex: 1;
+}
+
+.featureArrow {
+  font-size: 1.2rem;
+  color: var(--ifm-color-primary);
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.2s ease;
+}
+
+.featureCard:hover .featureArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------- Projects ---------- */
+.projects {
+  padding: 5rem 2rem;
+  background: var(--ifm-background-surface-color);
+}
+
+.projectsInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-border-color);
+  background: var(--ifm-background-color);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: all 0.25s ease;
+}
+
+.projectCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 16px rgba(74, 108, 247, 0.06);
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+[data-theme='dark'] .projectCard:hover {
+  box-shadow: 0 4px 16px rgba(124, 156, 252, 0.05);
+}
+
+.projectTag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(74, 108, 247, 0.08);
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.75rem;
+  width: fit-content;
+}
+
+[data-theme='dark'] .projectTag {
+  background: rgba(124, 156, 252, 0.1);
+}
+
+.projectTitle {
+  font-size: 1.1rem;
+  font-weight: 650;
+  margin-bottom: 0.4rem;
+}
+
+.projectDesc {
+  font-size: 0.875rem;
+  color: var(--ifm-font-color-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ---------- Responsive Hero ---------- */
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.6rem;
+  }
+
+  .features,
+  .projects {
+    padding: 3rem 1.5rem;
+  }
 }
