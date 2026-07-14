@@ -5,7 +5,7 @@ slug: /
 
 # 站点导览
 
-这是一个技术文档作品集，集中展示我在**文档工程**和**产品思维**方面的实践成果。
+这是一个技术文档作品集，集中展示我在**文档工程**和**技术写作**方面的实践成果。
 
 ---
 
@@ -13,32 +13,20 @@ slug: /
 
 ### 文档作品
 
-真实项目中产出的技术文档，覆盖不同文档类型：
+真实项目中产出的技术文档，覆盖不同文档类型和写作场景：
 
 | 文档 | 类型 | 看点 |
 | --- | --- | --- |
-| [IoT 物联网行业认知](/docs/doc-projects/iot-overview) | 概念解释型 | 对行业的理解和表达能力 |
-| [小米 IoT 平台接入指南](/docs/doc-projects/iot-platform-guide) | 操作指南型 | 流程清晰、步骤完整 |
-| [IoT 平台 API 文档](/docs/doc-projects/api-docs) | API 参考型 | 接口描述规范、示例可用 |
-| [文档质量评分系统](/docs/doc-projects/doc-score/intro) | 体系设计 | 从 0 到 1 设计质量管控方案 |
+| [IoT 基础概念说明](/docs/iot-overview) | 概念解释型 | 对行业的理解和表达能力 |
+| [平台文档优化 — 行业文档体系观察与启发](/docs/competitor-analysis) | 分析研究型 | 调研方法和文档体验洞察 |
+| [小米 IoT 平台接入指南](/docs/iot-platform-guide) | 操作指南型 | 流程清晰、步骤完整 |
+| [IoT 平台 API 文档](/docs/api-docs) | API 参考型 | 接口描述规范、示例可用 |
+| [Mermaid 图表](/docs/mermaid) | 工具演示 | 用代码画流程图、时序图、架构图 |
 
-### 产品思维
+### 建站手记
 
-方法论和分析，展示对文档工作的系统性思考：
+记录这个站点从零搭建的过程，以及一些工程化实践：
 
-- [Docs as Code 实践](/docs/product-thinking/docs-as-code) — 用工程化方式管理文档
-- [竞品分析：Apple vs 阿里云开发者文档](/docs/product-thinking/competitor-analysis) — 文档体验对比与洞察
-
-### 技能展示
-
-工具链和技术能力的直观演示：
-
-- [Mermaid 图表](/docs/skills/mermaid) — 用代码画流程图、时序图、架构图
-
----
-
-## 怎么看这个站点
-
-- 如果你是面试官，建议从**文档作品**开始，快速了解我的写作水平
-- 如果你关注方法论和思考深度，看**产品思维**
-- 侧边栏可以按分类浏览所有内容
+- [Docs as Code：这个站点是怎么搭的](/blog/docs-as-code) — 选型、搭建、部署全过程
+- [文档质量评分系统](/blog/doc-score) — 用 DeepSeek API 自动给文档打分
+- [我是怎么更新这个站点的](/blog/update-workflow) — 从写文档到上线的完整流程

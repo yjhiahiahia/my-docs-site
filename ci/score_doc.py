@@ -159,11 +159,33 @@ def main():
     result_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # 打印摘要
+    print("\n" + "=" * 60)
     if score is not None:
         status = "✅ 通过" if score >= SCORE_THRESHOLD else "❌ 未通过"
-        print(f"评分结果：{score}/100 {status}（阈值：{SCORE_THRESHOLD}）")
+        print(f"📄 文件：{doc_path}")
+        print(f"📊 评分结果：{score}/100 {status}（阈值：{SCORE_THRESHOLD}）")
     else:
+        print(f"📄 文件：{doc_path}")
         print("⚠️ 未能解析出分数，请检查评分结果")
+    print("=" * 60)
+
+    # 不管是否通过，都打印完整的评分详情和修改建议
+    print("\n📝 评分详情与修改建议：\n")
+    print(result)
+    print("\n" + "=" * 60)
+
+    # 写入 GitHub Actions Job Summary（如果在 CI 环境中）
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_path:
+        with open(summary_path, "a", encoding="utf-8") as f:
+            if score is not None:
+                emoji = "✅" if score >= SCORE_THRESHOLD else "❌"
+                f.write(f"## {emoji} {doc_path} — {score}/100\n\n")
+            else:
+                f.write(f"## ⚠️ {doc_path} — 未解析出分数\n\n")
+            f.write("<details>\n<summary>点击查看评分详情与修改建议</summary>\n\n")
+            f.write(result)
+            f.write("\n\n</details>\n\n")
 
     # 退出码：不通过时返回非零，让 CI 标记失败
     if score is None or score < SCORE_THRESHOLD:

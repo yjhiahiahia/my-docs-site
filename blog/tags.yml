@@ -1,19 +1,19 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
-
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+docs-as-code:
+  label: Docs as Code
+  permalink: /docs-as-code
+  description: Docs as Code 相关内容
 
 docusaurus:
   label: Docusaurus
   permalink: /docusaurus
-  description: Docusaurus tag description
+  description: Docusaurus 相关内容
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+ai:
+  label: AI
+  permalink: /ai
+  description: AI 工具相关内容
+
+doc-quality:
+  label: 文档质量
+  permalink: /doc-quality
+  description: 文档质量管控相关内容

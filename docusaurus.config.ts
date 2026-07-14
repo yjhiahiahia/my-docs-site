@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'S-Tier Lamb',
-  tagline: '文档工程与产品思维的实践作品集',
+  tagline: '要像建设新中国一样建设自己！',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -31,15 +31,16 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/yjhiahiahia/my-docs-site/edit/main/',
+          editUrl: undefined,
         },
         blog: {
           showReadingTime: true,
+          blogSidebarCount: 'ALL',
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl: 'https://github.com/yjhiahiahia/my-docs-site/edit/main/',
+          editUrl: undefined,
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -59,6 +60,10 @@ const config: Config = {
     },
     navbar: {
       title: 'S-Tier Lamb',
+      logo: {
+        alt: 'S-Tier Lamb Logo',
+        src: 'img/34381253_v872batch2-ning-02-v.svg',
+      },
       items: [
         {
           type: 'docSidebar',
@@ -66,7 +71,7 @@ const config: Config = {
           position: 'left',
           label: '作品集',
         },
-        {to: '/blog', label: '博客', position: 'left'},
+        {to: '/blog', label: '建站手记', position: 'left'},
         {
           href: 'https://github.com/yjhiahiahia/my-docs-site',
           label: 'GitHub',
@@ -86,11 +91,7 @@ const config: Config = {
             },
             {
               label: '文档作品',
-              to: '/docs/doc-projects/api-docs',
-            },
-            {
-              label: '产品思维',
-              to: '/docs/product-thinking/docs-as-code',
+              to: '/docs/iot-overview',
             },
           ],
         },
@@ -98,7 +99,7 @@ const config: Config = {
           title: '更多',
           items: [
             {
-              label: '博客',
+              label: '建站手记',
               to: '/blog',
             },
             {

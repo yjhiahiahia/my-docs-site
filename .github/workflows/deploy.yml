@@ -46,12 +46,21 @@ jobs:
             echo "没有需要评分的文档变更，跳过"
             exit 0
           fi
+          FAILED=0
           for file in $CHANGED_FILES; do
             if [ -f "$file" ]; then
+              echo ""
+              echo "=========================================="
               echo "评分: $file"
-              python ci/score_doc.py "$file" || exit 1
+              echo "=========================================="
+              python ci/score_doc.py "$file" || FAILED=1
             fi
           done
+          if [ "$FAILED" -eq 1 ]; then
+            echo ""
+            echo "❌ 存在评分未通过的文档，请根据上方建议修改后重新提交"
+            exit 1
+          fi
 
       - name: 构建站点
         run: npm run build
