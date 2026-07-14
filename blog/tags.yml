@@ -1,7 +1,7 @@
 docs-as-code:
-  label: Docs as Code
+  label: 建站记录
   permalink: /docs-as-code
-  description: Docs as Code 相关内容
+  description: 文档站搭建、维护和更新相关内容
 
 docusaurus:
   label: Docusaurus

@@ -43,14 +43,14 @@ const features: FeatureItem[] = [
     link: '/docs/iot-overview',
   },
   {
-    title: '质量体系设计',
-    description: '从 0 到 1 设计文档质量评分系统，接入 DeepSeek API 做自动化评估，集成到 CI 流水线。',
+    title: '质量评估助手',
+    description: '设计文档质量评估规则，让 AI 按标准检查文档，并接入 CI 流程输出修改建议。',
     icon: '\u{1F3AF}',
     link: '/blog/doc-score',
   },
   {
-    title: '工程化实践',
-    description: '用 Docs as Code 的方式管理文档：Markdown 写作、Git 版本控制、Lint 规范检查、CI/CD 自动部署。',
+    title: '建站与维护',
+    description: '记录这个文档站从搭建、内容整理、格式检查到自动发布的完整过程。',
     icon: '\u{1F527}',
     link: '/blog/docs-as-code',
   },
@@ -102,8 +102,8 @@ function ProjectsSection() {
         <div className={styles.projectGrid}>
           <Link to="/docs/iot-overview" className={styles.projectCard}>
             <span className={styles.projectTag}>概念解释</span>
-            <Heading as="h3" className={styles.projectTitle}>IoT 基础概念说明</Heading>
-            <p className={styles.projectDesc}>以小米智能家居为例，说明对 IoT 基础概念的理解</p>
+            <Heading as="h3" className={styles.projectTitle}>IoT 核心概念</Heading>
+            <p className={styles.projectDesc}>接入小米 IoT 平台前需要理解的概念和路径判断</p>
           </Link>
           <Link to="/docs/iot-platform-guide" className={styles.projectCard}>
             <span className={styles.projectTag}>操作指南</span>
@@ -115,10 +115,10 @@ function ProjectsSection() {
             <Heading as="h3" className={styles.projectTitle}>IoT 平台 API 文档</Heading>
             <p className={styles.projectDesc}>函数计算 API 接口文档，结构清晰、示例完整</p>
           </Link>
-          <Link to="/docs/competitor-analysis" className={styles.projectCard}>
-            <span className={styles.projectTag}>分析研究</span>
-            <Heading as="h3" className={styles.projectTitle}>平台文档优化</Heading>
-            <p className={styles.projectDesc}>行业文档体系观察与启发</p>
+          <Link to="/blog/iot-doc-thoughts" className={styles.projectCard}>
+            <span className={styles.projectTag}>工作思考</span>
+            <Heading as="h3" className={styles.projectTitle}>IoT 文档调研思考</Heading>
+            <p className={styles.projectDesc}>从竞品文档里整理出来的改进想法</p>
           </Link>
         </div>
       </div>
