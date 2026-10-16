@@ -1,6 +1,6 @@
 ---
 slug: update-workflow
-title: 我是怎么更新这个文档站的
+title: 文档站日常更新流程
 authors: [yjh]
 tags: [docs-as-code, doc-quality]
 ---
