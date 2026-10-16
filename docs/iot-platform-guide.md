@@ -4,9 +4,9 @@ sidebar_position: 4
 
 # 小米 IoT 开发者平台接入指南
 
-本文以“双键开关”为例，介绍使用 Wi-Fi 通用模组接入米家平台的必填配置和验证流程。开发者需按本文完成产品创建、基础配置、功能定义、扩展程序、固件开发、产品联调、高阶配置、自测和上线申请。
+本文以“双键开关”为例，说明如何使用 Wi-Fi 通用模组接入米家平台。操作从创建产品开始，依次完成基础配置、功能定义、扩展程序配置、固件开发、产品联调、高阶配置和自测，最后申请上线。每个阶段都需要完成相应的必填项和验证。
 
-> 信息有效性说明：本文中的平台入口、工具名称、测试清单和截图位置可能随平台版本变化。实际操作时，请以小米 IoT 开发者平台最新页面、工具下载入口和测试要求为准；截图仅用于说明关键入口位置，关键字段和预期结果均在正文中补充说明。
+> 平台入口、工具名称、测试清单和页面布局可能随版本变化，操作时以平台最新页面、下载入口和测试要求为准。正文说明了需要填写的字段和预期结果，截图用于辅助查找入口。
 
 ## 前提条件
 
@@ -16,7 +16,7 @@ sidebar_position: 4
 4. 已获得产品配置权限，详情请参考 [权限说明](https://iot.mi.com/v2/new/doc/configuration/permission/manage-member#权限说明)。
 5. 已了解平台基础概念，包括 [Spec 知识](https://iot.mi.com/v2/new/doc/introduction/knowledge/spec)、[UID](https://iot.mi.com/v2/new/doc/introduction/knowledge/explanation#UID)、[DID](https://iot.mi.com/v2/new/doc/introduction/knowledge/explanation#DID)、[Model](https://iot.mi.com/v2/new/doc/introduction/knowledge/explanation#Model) 和 [PID](https://iot.mi.com/v2/new/doc/introduction/knowledge/explanation#PID)。
 6. 已准备 USB 转串口模块、MHCWB5G Test Board 开发板和 MHCWB5G-B 模组。模组和开发板样品可在[模组采购](https://iot.mi.com/fe-op/manageCenter/purchase/module)中申请。
-7. 已安装串口终端工具，如 [MobaXterm](https://mobaxterm.mobatek.net/)，用于查看模组 log。
+7. 已安装串口终端工具，如 [MobaXterm](https://mobaxterm.mobatek.net/)，用于查看模组日志。
 8. 已安装串口调试助手，用于收发串口指令。
 9. 已安装 CH340 驱动和 USB 转串口模块对应驱动，确保电脑可识别开发板和串口模块的 COM 口。
 
@@ -138,7 +138,7 @@ sidebar_position: 4
 
 ### 第 6 步 - 搭建串口环境
 
-通用模组自带小米 IoT 固件，开发者通常无需烧录模组固件。本步骤只验证两条串口链路：电脑到模组日志串口、电脑到 MCU 通讯串口。
+通用模组自带小米 IoT 固件，开发者通常无需烧录模组固件。本步骤需要分别连接并验证模组日志串口和 MCU 通讯串口。前者用于查看日志，后者用于收发 MCU 通讯指令。
 
 1. 打开 MHCWB5G-B 模组规格书和开发资料，确认原理图、管脚描述、上电时序要求和物理尺寸。资料可在[模组选型页面](https://iot.mi.com/moduleBrowser.html)查找并下载，具体型号和资料版本以平台最新页面为准。
 
@@ -240,7 +240,7 @@ sidebar_position: 4
 
 #### set_properties
 
-`set_properties` 的下行流程为：米家扩展程序 → 云端 → 模组 → MCU。MCU 收到控制指令后，需完成以下处理：
+米家扩展程序发出 `set_properties` 控制指令后，指令依次经过云端和模组，传给 MCU。MCU 收到指令后，需要完成以下处理。
 
 ![set_properties 消息流程](./img/required-process-20-set-properties-flow.png)
 
@@ -253,7 +253,7 @@ sidebar_position: 4
 
 #### get_properties
 
-`get_properties` 的下行流程为：米家扩展程序 → 云端 → 模组 → MCU。MCU 收到状态查询后，需完成以下处理：
+米家扩展程序发出 `get_properties` 状态查询后，请求依次经过云端和模组，传给 MCU。MCU 收到请求后，需要完成以下处理。
 
 ![get_properties 消息流程](./img/required-process-21-get-properties-flow.png)
 
@@ -264,7 +264,7 @@ sidebar_position: 4
 
 #### properties_changed
 
-`properties_changed` 的上行流程为：MCU → 模组 → 云端 → 米家扩展程序。设备状态变化后，MCU 需主动上报属性变化，保证云端和 App 状态同步。
+设备状态变化后，MCU 需要主动发送 `properties_changed`，通过模组和云端将新状态同步到米家扩展程序。
 
 ![properties_changed 消息流程](./img/required-process-22-properties-changed-flow.png)
 
@@ -283,7 +283,7 @@ sidebar_position: 4
 
 ### 第 10 步 - 完成 OTA 开发并上传固件
 
-本步骤的目标是把可升级的 MCU 固件版本上传到平台，供后续调试和测试使用；第 11 步和第 12 步中的 OTA 测试用于验证升级流程是否稳定。
+本步骤将支持 OTA 的 MCU 固件上传到平台，供后续调试和测试使用。OTA 指通过网络远程升级固件，第 11 步和第 12 步会测试升级流程及其稳定性。
 
 1. 按平台要求完成 [OTA](https://iot.mi.com/v2/new/doc/configuration/firmware/firmware#概念说明) 开发。MCU OTA 开发流程请参考 [MCU OTA 升级开发](https://iot.mi.com/v2/new/doc/embedded-dev/module-dev/ota/mcu-ota)。
 2. 进入【固件开发】页面。
@@ -300,7 +300,7 @@ sidebar_position: 4
 
 - 固件上传失败：检查固件包格式、大小、版本号和 CRC 校验结果是否符合平台要求。
 - App 不展示升级提示：确认测试设备绑定账号、当前设备版本和平台中配置的目标升级版本是否匹配。
-- 版本信息填错：不要继续进入联调，先修正或重新创建固件版本，避免后续 OTA 测试结果失真。
+- 版本信息填错：不要继续进入联调，先修正或重新创建固件版本，以免用错版本，影响后续 OTA 测试结果。
 
 ### 第 11 步 - 完成固件测试
 
@@ -397,7 +397,7 @@ sidebar_position: 4
 
 ![OTA 测试设置](./img/required-process-30-ota-test-settings.png)
 
-**联调验证闭环**：日志只能证明模组与云端、模组与 MCU 的消息交互正常。真实产品还必须验证 MCU 执行指令后，硬件状态、串口日志和 App 显示一致。
+联调时，需要同时检查硬件动作、串口日志和 App 显示。收到指令和回复后，还要观察 MCU 是否实际驱动了硬件，并确认三个地方的状态一致。
 
 | 验证对象 | 验证方法 | 通过标准 |
 | --- | --- | --- |
@@ -498,6 +498,6 @@ sidebar_position: 4
 
 ![申请上线](./img/required-process-44-apply-online.png)
 
-**预期结果**：申请上线页面所有检查项均通过，平台接受上线申请。若存在未通过项，应返回对应配置页面修正后重新检查，不建议带着未确认问题提交。
+**预期结果**：申请上线页面所有检查项均通过，平台接受上线申请。若有未通过项，先返回对应配置页面修正，再重新检查并提交。
 
-完成以上步骤后，产品基础配置、功能定义、标准扩展程序、固件版本、产品联调、高阶配置、自测资料和上线检查项均已满足必填接入要求。
+完成以上配置，并通过联调、自测和上线检查后，即可提交产品上线申请。

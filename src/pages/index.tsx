@@ -38,13 +38,13 @@ type FeatureItem = {
 const features: FeatureItem[] = [
   {
     title: '文档工程',
-    description: '从概念说明到 API 参考，覆盖多种文档类型。注重结构化表达、信息完整和开发者体验。',
+    description: '通过 IoT 概念说明、接入指南和 API 参考，展示如何解释概念、拆分步骤和说明接口。',
     icon: '\u{1F4DD}',
     link: '/docs/iot-overview',
   },
   {
     title: '质量评估助手',
-    description: '设计文档质量评估规则，让 AI 按标准检查文档，并接入 CI 流程输出修改建议。',
+    description: '制定文档评分规则，让 AI 检查内容并给出修改建议。文档提交后，持续集成（CI）流程会自动运行检查。',
     icon: '\u{1F3AF}',
     link: '/blog/doc-score',
   },
@@ -77,7 +77,7 @@ function FeaturesSection() {
           核心能力
         </Heading>
         <p className={styles.sectionSubtitle}>
-          内容有质量，流程有体系
+          展示文档写作、质量检查和站点维护的实践
         </p>
         <div className={styles.featureGrid}>
           {features.map((feature, idx) => (
@@ -97,13 +97,13 @@ function ProjectsSection() {
           项目作品
         </Heading>
         <p className={styles.sectionSubtitle}>
-          真实工作中产出的文档与体系设计
+          工作中编写的技术文档，以及文档流程的设计记录
         </p>
         <div className={styles.projectGrid}>
           <Link to="/docs/iot-overview" className={styles.projectCard}>
             <span className={styles.projectTag}>概念解释</span>
             <Heading as="h3" className={styles.projectTitle}>IoT 核心概念</Heading>
-            <p className={styles.projectDesc}>接入小米 IoT 平台前需要理解的概念和路径判断</p>
+            <p className={styles.projectDesc}>解释产品、设备、Spec、模组等概念，并说明下一步该读什么</p>
           </Link>
           <Link to="/docs/iot-platform-guide" className={styles.projectCard}>
             <span className={styles.projectTag}>操作指南</span>
@@ -113,7 +113,7 @@ function ProjectsSection() {
           <Link to="/docs/api-docs" className={styles.projectCard}>
             <span className={styles.projectTag}>API 参考</span>
             <Heading as="h3" className={styles.projectTitle}>IoT 平台 API 文档</Heading>
-            <p className={styles.projectDesc}>函数计算 API 接口文档，结构清晰、示例完整</p>
+            <p className={styles.projectDesc}>说明函数计算接口的认证方式、参数、响应和调用示例</p>
           </Link>
           <Link to="/blog/iot-doc-thoughts" className={styles.projectCard}>
             <span className={styles.projectTag}>工作思考</span>
@@ -131,7 +131,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={siteConfig.title}
-      description="技术文档作品集 — 文档工程与产品思维">
+      description="技术文档作品集，收录 IoT 文档、质量评估和建站维护记录">
       <HeroSection />
       <main>
         <FeaturesSection />

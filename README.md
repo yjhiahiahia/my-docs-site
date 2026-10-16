@@ -1,43 +1,43 @@
-# Website
+# 技术文档作品集
 
-📖 **在线访问**：<https://yjhiahiahia.github.io/my-docs-site/>
+在线访问：<https://yjhiahiahia.github.io/my-docs-site/>
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+本站使用静态网站生成器 [Docusaurus](https://docusaurus.io/) 搭建，收录 IoT 概念说明、平台接入指南和 API 文档，以及建站、文档质量评估和日常维护的记录。
 
-## Installation
+## 安装依赖
 
 ```bash
 yarn
 ```
 
-## Local Development
+## 本地预览
 
 ```bash
 yarn start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+运行后会启动本地开发服务器并打开浏览器。大多数修改保存后即可在页面中看到，无需重启服务器。
 
-## Build
+## 构建站点
 
 ```bash
 yarn build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+构建结果保存在 `build` 目录中，可以部署到静态网站托管服务。
 
-## Deployment
+## 部署
 
-Using SSH:
+通过 SSH 部署：
 
 ```bash
 USE_SSH=true yarn deploy
 ```
 
-Not using SSH:
+不使用 SSH 时，指定 GitHub 用户名：
 
 ```bash
 GIT_USER=<Your GitHub username> yarn deploy
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+使用 GitHub Pages 托管时，部署命令会构建站点，并将结果推送到 `gh-pages` 分支。
